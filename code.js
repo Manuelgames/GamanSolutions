@@ -1,3 +1,4 @@
+//Manuel Alejandro Garcia Salazar
 alert('PROBLEMA 1');
 let aumento = 10000;
 let caracteresInstruccion1;
@@ -90,22 +91,21 @@ for(let k = 0; k < caracteresSobrantes; k++){
     }
 }
 cadenaFinal = String (cadenaFinal);
-console.log(typeof(cadenaFinal));
-
+let respuesta = 0;
 for(let i = 0; i < cadenaFinal.length; i++){
-    if(cadenaFinal.charAt(i) == cadenaFinal.charAt(i++)){
-        console.log('igual');
-        console.log(cadenaFinal + ' NO');
-        alert(cadenaFinal + ' NO');
+    if(cadenaFinal.charAt(i) == cadenaFinal.charAt(i+1)){
+        respuesta = 1;
         break;
+    }else{
+        respuesta = 0;
     }
 }
-console.log(cadenaFinal + ' SI');
-alert(cadenaFinal + ' SI');
-    
-
-
-
+if(respuesta == 0){
+    alert(cadenaFinal + '   SI');
+}
+else if(respuesta == 1){
+    alert(cadenaFinal + '   NO'); 
+}
 //PROBLEMA 2
 alert('PROBLEMA 2');
 let cantidadRondas;
@@ -149,6 +149,7 @@ for(let i = 0; i < cantidadRondas; i++){
         }
     }
 }
+//validacion de ganador
 if(cantidadMayor1 > cantidadMayor2){
     alert('1 '+ cantidadMayor1);
 }
