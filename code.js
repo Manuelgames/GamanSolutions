@@ -7,8 +7,13 @@ let caracteresTotal;
 let primerInstruccion;
 let segundaInstruccion;
 let caracteresSobrantes;
+let caracteresSobrantes2;
 let cadenaFinal = [];
+let cadenaFinal2 = [];
+let respuesta = 0;
+let respuesta2 = 0;
 let posicion = 0;
+let posicion2 = 0;
 let resultadofinal;
 //validacion de cantiadad de caracteres
 for(let i = 0; i < aumento; i++){
@@ -67,10 +72,19 @@ for(let j = 0; j < aumento; j++){
 caracteresInstruccion1 = Number(caracteresInstruccion1);
 caracteresInstruccion2 = Number(caracteresInstruccion2);
 caracteresTotal = Number(caracteresTotal);
-caracteresSobrantes = caracteresInstruccion1 + caracteresInstruccion2;
-caracteresSobrantes = caracteresTotal - caracteresSobrantes;
-cadenaFinal = [primerInstruccion + segundaInstruccion];
+
+caracteresSobrantes = caracteresTotal - caracteresInstruccion1.length;
+caracteresSobrantes2 = caracteresTotal - caracteresInstruccion2.length;
+
+
+// cadenaFinal = [primerInstruccion + segundaInstruccion];
 let cantidad = 1;
+//conversion a string
+primerInstruccion = String (primerInstruccion);
+segundaInstruccion = String (primerInstruccion);
+
+
+//funcion generador de caracteres
 function generadorCaracteres(length) {
     let resultado= '';
     let caracteres= 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -80,6 +94,12 @@ function generadorCaracteres(length) {
     }
     return resultado;
 }
+
+
+//asignacion a arreglo de cadenas para generar el mensaje
+cadenaFinal = primerInstruccion;
+cadenaFinal2= segundaInstruccion;
+//se aplican los caracteres aleatorios a las dos cadenas
 for(let k = 0; k < caracteresSobrantes; k++){
     if(posicion == 0){
         cadenaFinal = [generadorCaracteres(1) + cadenaFinal];
@@ -90,8 +110,19 @@ for(let k = 0; k < caracteresSobrantes; k++){
         posicion = 0;
     }
 }
+for(let k = 0; k < caracteresSobrantes2; k++){
+    if(posicion == 0){
+        cadenaFinal2 = [generadorCaracteres(1) + cadenaFinal2];
+        posicion2 = 1;
+    }
+    else{
+        cadenaFinal2 = [cadenaFinal2 + generadorCaracteres(1)];
+        posicion2 = 0;
+    }
+}
 cadenaFinal = String (cadenaFinal);
-let respuesta = 0;
+cadenaFinal2 = String (cadenaFinal2);
+//validacion de caracteres repetidos
 for(let i = 0; i < cadenaFinal.length; i++){
     if(cadenaFinal.charAt(i) == cadenaFinal.charAt(i+1)){
         respuesta = 1;
@@ -100,12 +131,41 @@ for(let i = 0; i < cadenaFinal.length; i++){
         respuesta = 0;
     }
 }
+for(let i = 0; i < segundaInstruccion.length; i++){
+    if(cadenaFinal2.charAt(i) == cadenaFinal2.charAt(i+1)){
+        respuesta2 = 1;
+        break;
+    }else{
+        respuesta2 = 0;
+    }
+}
+//validacion de mensajes
+//mensaje 1
 if(respuesta == 0){
-    alert(cadenaFinal + '   SI');
+    alert('1   SI');
 }
 else if(respuesta == 1){
-    alert(cadenaFinal + '   NO'); 
+    alert('1   NO'); 
 }
+//mensaje 2
+if(respuesta2 == 0){
+    alert('2  SI');
+}
+else if(respuesta2 == 1){
+    alert('2  NO'); 
+}
+
+
+
+
+
+
+
+
+
+
+
+
 //PROBLEMA 2
 alert('PROBLEMA 2');
 let cantidadRondas;
