@@ -1,5 +1,43 @@
 //Manuel Alejandro Garcia Salazar
-alert('PROBLEMA 1');
+alert(`PROBLEMA 1 Existe una técnica de encriptación que ocupa una agencia para poder enviar instrucciones a sus agentes.
+Para enviar una instrucción, la agencia transmite un mensaje donde la instrucción aparece entre otros
+caracteres. Por ejemplo la instrucción CeseAlFuego puede ser enviada como XcamakCeseAlFuegoDLKmN. Al
+recibir el mensaje, los agentes (con la ayuda de un libro con todas las instrucciones posibles) determinan
+cual es la instrucción escondida en el mensaje. Máximo existe una instrucción escondida por mensaje
+aunque es posible que no haya ninguna instrucción en el mensaje. Desafortunadamente el transmisor que
+ocupan para el envío de los mensajes tiene una falla. En lugar de enviar los caracteres una sola vez, esta
+enviándolos una, dos o hasta tres veces. Por ejemplo, el mensaje anterior pudiera ser enviado así:
+XXcaaamakkCCessseAAllFueeegooDLLKmmNNN. Esto hace que sea más difícil para los agentes el encontrar
+una instrucción. (Nota: Ninguna instrucción en el libro de instrucciones contiene dos letras iguales seguidas)
+El programa recibe dos instrucciones y un mensaje, y el resultado debe ser si existe o no una instrucción
+escondida en el mensaje.
+Formato de Entrada
+La entrada al programa es un archivo de texto que consiste en cuatro líneas:
+- La primera línea son tres enteros M1, M2 y N. M1 y M2 es el número de caracteres de las dos
+instrucciones y N es el número de caracteres en el mensaje.
+o N siempre estará entre 3 y 5000 inclusive
+o M1 y M2 siempre estarán entre 2 y 50 inclusive
+o
+- La segunda línea contiene la primera instrucción
+- La tercera línea contiene la segunda instrucción
+- La cuarta línea contiene el mensaje § Los caracteres posibles en el mensaje son [a-zA-Z0-9]
+
+Formato de Salida
+La salida del programa es un archivo que contiene dos líneas.
+- La primera línea contiene un SI si la primer instrucción se encuentra escondida en el mensaje o un
+NO de lo contrario
+- La segunda línea contiene un SI si la segunda instrucción se encuentra escondida en el mensaje o un
+NO de lo contrario
+Ejemplo
+Entrada:
+11 15 38
+CeseAlFuego
+CorranACubierto
+XXcaaamakkCCessseAAllFueeegooDLLKmmNNN
+Salida:
+SI
+NO`
+);
 let aumento = 10000;
 let caracteresInstruccion1;
 let caracteresInstruccion2;
@@ -72,18 +110,8 @@ for(let j = 0; j < aumento; j++){
 caracteresInstruccion1 = Number(caracteresInstruccion1);
 caracteresInstruccion2 = Number(caracteresInstruccion2);
 caracteresTotal = Number(caracteresTotal);
-
 caracteresSobrantes = caracteresTotal - caracteresInstruccion1.length;
 caracteresSobrantes2 = caracteresTotal - caracteresInstruccion2.length;
-
-
-// cadenaFinal = [primerInstruccion + segundaInstruccion];
-let cantidad = 1;
-//conversion a string
-primerInstruccion = String (primerInstruccion);
-segundaInstruccion = String (primerInstruccion);
-
-
 //funcion generador de caracteres
 function generadorCaracteres(length) {
     let resultado= '';
@@ -94,8 +122,6 @@ function generadorCaracteres(length) {
     }
     return resultado;
 }
-
-
 //asignacion a arreglo de cadenas para generar el mensaje
 cadenaFinal = primerInstruccion;
 cadenaFinal2= segundaInstruccion;
@@ -131,7 +157,8 @@ for(let i = 0; i < cadenaFinal.length; i++){
         respuesta = 0;
     }
 }
-for(let i = 0; i < segundaInstruccion.length; i++){
+
+for(let i = 0; i < cadenaFinal2.length; i++){
     if(cadenaFinal2.charAt(i) == cadenaFinal2.charAt(i+1)){
         respuesta2 = 1;
         break;
@@ -139,6 +166,8 @@ for(let i = 0; i < segundaInstruccion.length; i++){
         respuesta2 = 0;
     }
 }
+console.log(cadenaFinal)
+console.log(cadenaFinal2)
 //validacion de mensajes
 //mensaje 1
 if(respuesta == 0){
@@ -154,20 +183,28 @@ if(respuesta2 == 0){
 else if(respuesta2 == 1){
     alert('2  NO'); 
 }
-
-
-
-
-
-
-
-
-
-
-
-
 //PROBLEMA 2
-alert('PROBLEMA 2');
+alert(`PROBLEMA 2 El ganador en este caso sería el Jugador 1 ya que el obtuvo la máxima ventaja (58) al final de la primera
+ronda durante el juego. El programa recibe los marcadores y deberá indicar el ganador (no hay empates, se
+puede asumir siempre existe un ganador único)
+Formato de Entrada
+La entrada al programa es un archivo de texto que consiste en varias líneas.
+- La primer línea es un entero menor o igual a 10000 indicando el número de rondas
+- Después hay una línea por ronda con los marcadores de los dos jugadores
+Formato de Salida
+La salida del programa es un archivo que contiene una línea
+- Esta línea contiene dos enteros, el primer entero es 1 o 2 indicando quien fue el ganador, y el
+segundo entero es la ventaja con la que gana ese jugador
+Ejemplo
+Entrada:
+5
+140 82
+89 134
+90 110
+112 106
+88 90
+Entrada:
+1 58` );
 let cantidadRondas;
 let jugador1P = [];
 let jugador2P = [];
